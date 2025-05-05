@@ -1,12 +1,10 @@
 package pemodeland2;
 public class polinomKuadratik {
-    // Fungsi untuk menyelesaikan sistem persamaan linear menggunakan Eliminasi Gauss
+  
     public static double[] gaussElimination(double[][] A, double[] b) {
         int n = b.length;
 
-        // Eliminasi maju
         for (int i = 0; i < n; i++) {
-            // Pivoting
             int max = i;
             for (int j = i + 1; j < n; j++) {
                 if (Math.abs(A[j][i]) > Math.abs(A[max][i])) {
@@ -14,7 +12,6 @@ public class polinomKuadratik {
                 }
             }
 
-            // Tukar baris
             double[] temp = A[i];
             A[i] = A[max];
             A[max] = temp;
@@ -23,7 +20,6 @@ public class polinomKuadratik {
             b[i] = b[max];
             b[max] = t;
 
-            // Eliminasi
             for (int j = i + 1; j < n; j++) {
                 double factor = A[j][i] / A[i][i];
                 b[j] -= factor * b[i];
@@ -33,7 +29,6 @@ public class polinomKuadratik {
             }
         }
 
-        // Substitusi mundur
         double[] x = new double[n];
         for (int i = n - 1; i >= 0; i--) {
             double sum = b[i];
@@ -47,17 +42,14 @@ public class polinomKuadratik {
     }
 
     public static void main(String[] args) {
-        // Matriks koefisien A
         double[][] A = {
             {1, 8.0, 64.00},
             {1, 9.0, 81.00},
             {1, 9.5, 90.25}
         };
 
-        // Vektor konstanta b
         double[] b = {2.0794, 2.1972, 2.2513};
 
-        // Hitung solusi a0, a1, a2
         double[] result = gaussElimination(A, b);
 
         System.out.println("Koefisien polinom kuadratik:");

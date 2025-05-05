@@ -2,7 +2,7 @@ package pemodeland2;
 public class persamaan2 {
 
     public static void main(String[] args) {
-        // Matriks augmented: [a0 a1 a2 | b]
+        
         double[][] matrix = {
             {1, 8, 64, 2.0794},
             {1, 9, 81, 2.1972},
@@ -11,7 +11,6 @@ public class persamaan2 {
 
         int n = 3;
 
-        // Eliminasi Gauss-Jordan
         for (int i = 0; i < n; i++) {
             double pivot = matrix[i][i];
             for (int j = 0; j <= n; j++) {
@@ -27,17 +26,14 @@ public class persamaan2 {
                 }
             }
         }
-
-        // Ambil hasil
+        
         double a0 = matrix[0][3];
         double a1 = matrix[1][3];
         double a2 = matrix[2][3];
 
-        // Hitung P2(x)
         double x = 9.2;
         double p2 = a0 + a1 * x + a2 * x * x;
 
-        // Tampilkan output
         System.out.printf("a0  %.4f\n", a0);
         System.out.printf("a1  %.4f\n", a1);
         System.out.printf("a2  %.4f\n", a2);
